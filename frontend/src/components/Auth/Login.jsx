@@ -24,7 +24,7 @@ const Login = () => {
     } else {
       login(formData).then((res) => {
         if (res?.success) {
-          setUser(res?.user._id); console.log("this is user", res);
+          setUser(res?.user._id); navigate("/"); console.log("this is user", res);
         }
       })
 
