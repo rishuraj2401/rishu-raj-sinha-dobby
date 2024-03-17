@@ -96,15 +96,14 @@ const Signup = () => {
         <button
           onClick={(e) => handleSubmit(e)}
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
-        >
-          Sign Up
+        >  Sign Up
         </button>
 
         {/* Already Signed Up Link */}
         <p className="mt-4 text-gray-600">
           Already have an account?{" "}
           <button type="button" >
-            <Link to="/signup" className="text-blue-500 hover:underline">
+            <Link to="/login" className="text-blue-500 hover:underline">
               Log In
             </Link>
           </button>
