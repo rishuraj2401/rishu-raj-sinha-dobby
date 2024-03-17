@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Left Side */}
         <div className="text-white font-semibold text-2xl ">
-          <Link href="/"> Image.com</Link>
+          <Link to="/"> Home</Link>
         </div>
 
         {/* Mobile Menu Toggle Button */}
@@ -45,6 +45,7 @@ const Navbar = () => {
         {/* Right Side - Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           {user?(<> <Link to='/upload'  className="text-white">UploadImages</Link>
+          <Link to='/'  className="text-white">SearchImage</Link>
           <Link to="/"  className="text-white">
             <button type="button" onClick={handleLogout}>Logout</button>
           </Link></>):(<> <Link to='/login'  className="text-white">Login</Link>
@@ -66,6 +67,13 @@ const Navbar = () => {
             className="block py-2 px-4 text-white"
           >
             UploadImages
+          </Link>
+          <Link
+            to="/"
+            target="_blank"
+            className="block py-2 px-4 text-white"
+          >
+            SearchImage
           </Link>
           <Link to="/signup" className="block py-2 px-4 text-white">Logout
           </Link></>):(<><Link

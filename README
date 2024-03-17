@@ -1,0 +1,53 @@
+## Live 
+Link: https://rrs-dobby.vercel.app/
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+### 1. Clone the Repository
+
+
+git clone https://github.com/rishuraj2401/rishu-raj-sinha-dobby
+
+### 2. Backend Setup
+2.1. Install Dependencies
+
+cd server
+npm install
+# 2.2. Set Environment Variables
+Create a .env file in the server directory and add the following environment variables:
+
+
+MONGODB_URI=your-mongodb-uri
+Replace your-mongodb-uri with your MongoDB connection string.
+
+# 3. Frontend Setup
+
+3.1. Install Dependencies
+cd ../frontend
+npm install
+3.2. Set Environment Variables
+Create a .env file in the client directory and add the following environment variable:
+
+REACT_APP_TOKEN_KEY=your-token-key
+Replace your-token-key with your desired token key.
+
+# 4. Start the Application
+4.1. Start the Backend Server
+
+cd ../server
+npm start
+The backend server will start running on port 5000 by default.
+
+4.2. Start the Frontend Development Server
+
+cd ../frontend
+npm start
+The frontend development server will start running on port 3000 and open your default browser to http://localhost:3000/.
+
+# Testing
+You can test the backend APIs using Postman or any REST API client. Make sure the backend server is running before testing.
+
+Deployment
+This is deployed on vercel.

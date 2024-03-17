@@ -5,8 +5,8 @@ import { AuthContext } from '../usercontext/userContext';
 
 const Signup = () => {
   // const { handleSignUp, prevRoute, setPrevRoute } = useContext(AuthContext);
-  const navigate=useNavigate();
-  const {setUser}=useContext(AuthContext)
+  const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext)
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -20,15 +20,23 @@ const Signup = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const dont = (e) => {
-    // e.preventDefault();
-    // // setPrevRoute("/signUp");
-    // console.log("dont in sinUp");
-  };
+
 
   const handleSubmit = (e) => {
-    signup(formData).then((res)=>{ setUser(res?.user._id) ;navigate("/")})
-    console.log("Sending data to the backend:", formData);
+    if (!formData.username || !formData.password || !formData.name) {
+      alert("enter all field");
+    }
+    else if (formData.password !== formData.confirmPassword) {
+      alert("confirmPassword is not matching")
+    }
+    else {
+      signup(formData).then((res) => {
+        if (res?.success) {
+          setUser(res?.user._id); navigate("/")
+        }
+      })
+      console.log("Sending data to the backend:", formData);
+    }
   };
 
   return (
@@ -95,11 +103,10 @@ const Signup = () => {
         {/* Already Signed Up Link */}
         <p className="mt-4 text-gray-600">
           Already have an account?{" "}
-          <button type="button" onClick={dont}>
-            {" "}
-            <Link to="/signin" className="text-blue-500 hover:underline">
+          <button type="button" >
+            <Link to="/signup" className="text-blue-500 hover:underline">
               Log In
-            </Link>{" "}
+            </Link>
           </button>
         </p>
       </div>

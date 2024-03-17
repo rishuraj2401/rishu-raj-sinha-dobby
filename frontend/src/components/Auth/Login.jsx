@@ -1,36 +1,34 @@
 import React, { useContext, useState } from 'react';
-import {  Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../utils/api';
 import { AuthContext } from '../usercontext/userContext';
 
 const Login = () => {
-  // const {handleSignIn,user, setUser, prevRoute, setPrevRoute} =useContext(AuthContext)
-  // const router=useRouter()
-  const {user,setUser}= useContext(AuthContext)
-  const navigate=useNavigate()
+
+  const { user, setUser } = useContext(AuthContext)
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    strategy:"local"
+    strategy: "local"
   });
-  
-const dont =()=>{
-  // setPrevRoute("/signIn");
-  // console.log("this is prev route",prevRoute);
-  // router.push("/signUp");
-  
-}
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!formData.username || !formData.password){
+    if (!formData.username || !formData.password) {
       alert("enter all field");
-    }else{
-    login(formData).then((res)=>{setUser(res?.user._id);console.log("this is user",res);})
-    console.log('Form submitted:', formData);}
+    } else {
+      login(formData).then((res) => {
+        if (res?.success) {
+          setUser(res?.user._id); console.log("this is user", res);
+        }
+      })
+
+    }
   };
 
   return (
@@ -49,7 +47,7 @@ const dont =()=>{
               value={formData.username}
               onChange={handleChange}
               className="border-b w-full py-2 focus:outline-none focus:border-blue-500"
-            //   placeholder="Your Email"
+              //   placeholder="Your Email"
               required
             />
           </div>
@@ -64,21 +62,21 @@ const dont =()=>{
               value={formData.password}
               onChange={handleChange}
               className="border-b w-full py-2 focus:outline-none focus:border-blue-500"
-            //   placeholder="Your Password"
+              //   placeholder="Your Password"
               required
             />
           </div>
 
           <button
             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            type="submit" onClick={(e)=>handleSubmit(e)}
+            type="submit" onClick={(e) => handleSubmit(e)}
           >
             Sign In
           </button>
-        </form> 
+        </form>
 
         <p className="mt-4 text-gray-600">
-          Don&apos;t have an account? <button type='button' onClick={dont}><Link to="/signup">Sign Up</Link></button>
+          Don&apos;t have an account? <button type='button' ><Link to="/signup">Sign Up</Link></button>
         </p>
       </div>
     </div>

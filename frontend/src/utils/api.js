@@ -4,10 +4,10 @@ import { setToken } from './auth';
 // const BASE_URL = 'http://localhost:5000/api';
 const BASE_URL = 'https://rishu-raj-sinha-dobby.vercel.app/api';
 
-    
+
 export const auth = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/auth` , {
+    const response = await axios.get(`${BASE_URL}/auth`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -15,7 +15,8 @@ export const auth = async () => {
     console.log("initial", response.data);
     return response.data;
   } catch (error) {
-    // throw error.response.data;
+    // alert("invalid input")
+
   }
 };
 export const signup = async (formData) => {
@@ -24,7 +25,7 @@ export const signup = async (formData) => {
     setToken(response.data.token)
     return response.data;
   } catch (error) {
-    // throw error.response.data;
+    alert("Already signed in! or invalid input !!!")
   }
 };
 
@@ -32,9 +33,12 @@ export const login = async (formData) => {
   try {
     const response = await axios.post(`${BASE_URL}/auth/login`, formData);
     setToken(response.data.token)
+    console.log("response", response);
     return response.data;
   } catch (error) {
     // throw error.response.data;
+    alert("User not found")
+
   }
 };
 
@@ -46,9 +50,10 @@ export const uploadImage = async (formData) => {
         Authorization: localStorage.getItem('token')
       }
     });
-    console.log("token",localStorage.getItem('token'));
+    alert("uploaded")
+    console.log("token", localStorage.getItem('token'));
   } catch (error) {
-    console.log("token",localStorage.getItem('token'));
+    console.log("token", localStorage.getItem('token'));
 
     console.log("error");
   }
